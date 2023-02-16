@@ -1,0 +1,507 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+
+/*===========================  Body Tag =========================*/
+body{
+    font-family: "barlow", sans-serif;
+    line-height: 1.7;
+    color: #516171;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: 700 !important;
+          color: #092032;
+   font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    color: #092032;
+    text-decoration: none;
+    transition: all 0.3s ease ;
+    font-weight:500;
+}
+section{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+img{
+    width:100%
+}
+.bg-cover{
+    background-position: center !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+/* ============================= Body tags end =============================*/
+
+ /*============================== Top Navbar End =============================*/
+.top-nav{
+background-color: rgb(26, 115, 232);
+padding-top: 5px;
+padding-bottom: 5px;
+}
+.top-nav p{
+   margin-bottom: 3px;
+   display: inline-block;
+   margin-right: 16px;
+   color: #ffff;
+   font-family: Arial, Helvetica, sans-serif;
+}
+.top-nav i,
+.top-nav span{
+vertical-align: middle;
+}
+
+.social-links a{
+    width: 34px;
+    height:34px;
+    background-color:#008000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color:#24262b;
+font-size: 23px;
+border-radius: 100%;
+}
+.social-links a:hover{
+    background-color:#008000;
+color:#ffffff;
+}
+
+/* =============================Top Navbar End ========================= */
+/* ============================= Main NavBar  ===========================*/
+.navbar{
+    box-shadow: 0px 6px 30px rgba(0,0,0,0.08);
+    background-color: rgb(0, 33, 78);
+    margin-top: 1px;
+}
+.navbar a{
+    color: #fff;
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active{
+color:rgb(253, 200, 14);
+}
+.navbar-brand{
+    font-weight: 700;
+    font-size: 26px;
+    color:#092032;
+
+}
+.navbar-brand span{
+    color: #ff4d29;
+}
+
+.dropdown-item{
+    background-color: rgb(0, 33, 78);
+    border-top:1px solid #e91e63;
+
+ }
+.dropdown .dropdown-item:hover{
+   color: rgb(253, 200, 14);
+   background-color: rgb(0, 16, 35);
+}
+.navbar .navbar-nav > li > a.active,
+.navbar .navbar-nav > li:hover > a,
+.light_skin.transparent_header.nav-fixed .navbar .navbar-nav > li > a.active,
+.light_skin.transparent_header.nav-fixed .navbar .navbar-nav > li:hover > a {
+	color: #FEBC34;
+}
+
+.navbar .navbar-nav li {
+	position: relative;
+	list-style: none;
+	transition: all 0.3s ease 0s;
+}
+.navbar-nav .dropdown-menu {
+	border: 0;
+	border-radius: 0;
+	margin: 0;
+	padding: 0;
+	min-width: 12rem;
+}
+/* =======================   End Main Navbar ======================== */
+/* ====================== Mobile ancher tags start ======================== */
+/* .mobileheadings{
+ background-color:green;
+ color:orange ;
+ padding-left: 25px;
+ padding-top: 6px;
+ padding-bottom: 6px;
+ border-top: 3px solid red;
+} */
+.heading_of_edu{
+    text-align: center;
+    margin-bottom: 30px;
+    color: red;
+
+}
+.eduancher{
+    background-color:rgb(180, 247, 186);
+    padding: 0px;
+    border-radius: 20px;
+     border: 3px solid rgb(0, 170, 0);
+    box-shadow: 0px 2px 5px;
+    margin-top: 30px;
+
+}
+.eduancher h5{
+color:red;
+padding-top:7px ;
+padding-bottom: 7px;
+padding-left: 11px;
+/* background-color:rgb(180, 247, 186); */
+background-color: #ddf7dd;
+border: 1px solid red;
+border-radius: 9px;
+}
+
+.mobile_ancher_text_settings{
+   text-align: center;
+   font-size: 19px;
+   font-family: sans-serif;
+   padding-top: 16px;
+   padding-bottom: 16px;
+}
+.eduancher a{
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+.eduancher a:hover{
+color:rgb(252, 14, 157);
+}
+
+/* ====================== Mobile ancher tags end ======================== */
+/* =======================  Breadcrumb ============================== */
+.breadcrumb1{
+    /* background-color: rgb(0, 33, 78); */
+    background-color: rgb(101, 101, 60);
+    margin-top: 1px;
+}
+.breadcrumb1 a{
+color: #fff;
+padding-left: 18px;
+}
+.breadcrumb1 a:hover{
+    color: #FEBC34;
+    padding-left: 18px;
+    }
+.breadcrumb1 .active{
+    color: pink;
+    }
+
+
+
+
+
+
+
+
+
+
+/* =======================  Breadcrumb end ======================== */
+/* ======================= Button Start    ================================== */
+.btn{
+    padding: 9px 24px;
+    font-weight: 500;
+}
+.btn-brand{
+    background-color: #ff4d29;
+    color: #fff;
+    border: #ff4d29;
+}
+.btn-brand:hover{
+    color: #fff;
+    background-color:#d63e20;
+}
+/* =====================  Button End ==============================*/
+
+/* ------------ SN:3 ---------Sliders -----------------------------------*/
+
+
+
+/* ------------ SN:3 ---------Sliders -----------------------------------*/
+/* ---------------- SN:4 --------- ----------logo tag  ------------- */
+.logo{
+ box-shadow: 0px 2px 5px;
+}
+.logo p{
+    color: #000000;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ------------------ SN:4 ------- ----------logo tag  ------------- */
+
+/* ------------ SN:5 -------------Info-Box tags start ---------------------------*/
+.about1{
+    box-shadow: 0px 8px 30px rgba(0, 700, 0, 80);
+}
+.about1 p{
+    padding-right: 2px;
+    color: #000000;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.info-box {
+    box-shadow: 0px 8px 30px rgba(0, 700, 0, 80);
+
+    align-items: center;
+    display: flex;
+}
+.info-box img {
+    width: 90px;
+}
+
+.about1 h5{
+   margin-top: 14px;
+}
+/* ===================    Info-Box tags end =========================*/
+
+
+/* =====================  Intro class tags start =========================*/
+.services1{
+    box-shadow: 0px 8px 30px rgba(0, 700, 0, 80);
+}
+.services1 h6{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-shadow: 0px 8px 30px rgba(0, 700, 0, 80);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.services1 h1{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-shadow: 0px 8px 30px rgba(0, 700, 0, 80);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.services1 p{
+    color: #000000;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.intro {
+    margin-bottom: 40px;
+
+}
+.intro h6{
+   font-weight: 400;
+   color: #d63e20;
+   font-family: Arial, Helvetica, sans-serif;
+}
+.intro p{
+    max-width: 500px;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* .container{
+    border: 2px solid red;
+} */
+.white{
+    color: white;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===================  Intro class tags end ==================*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================  Services  ================================ */
+.service-box{
+    padding: 32px;
+    box-shadow: 0px 6px 30px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.service-box h5{
+margin-top: 24px;
+margin: 12px;
+font-family: Arial, Helvetica, sans-serif;
+}
+/* ==========================  Services end  ================================ */
+
+
+/* ===========================   Footer start =========================== */
+
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
+.footer{
+	background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: green;
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #24262b;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #ffffff;
+	background-color: green;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+/* ============================= End Home Page  ============================= */
+
+ /* ================= Accordian start=========== */
+ .dusra h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3106bd;
+    background-color: rgb(210, 244, 210);
+    text-decoration: none;
+    padding-left: 25px;
+
+  }
+  .dusra p{
+    margin: auto;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #000000;
+    background-color: rgb(237, 237, 237);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+  }
+  .accordion-item a:hover{
+    color: red;
+    background-color: rgb(212, 213, 213);
+  }
+/* Above by me */
+
+
+.accordion-item{
+    transition: all 0.5s ease-in-out;
+    margin: 5px;
+    padding: 5px;
+  }
+  .accordion-item:hover{
+    box-shadow: 1px -8px 16px -10px rgba(0,0,0,0.75);
+  }
+  .accordion-item:hover .mybtn{
+    opacity: 1;
+  }
+  .accordion-item  .accordion-header{
+    position: relative;
+    border: 1px solid black;
+  }
+  .accordion-item .mybtn{
+    transition: all .5s ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+  }
+
+ /* ================= Accordian End=========== */
+
+/* =======================  sem ========================*/
+.sem img{
+    height: 300px;
+}
+
+
+
+/* BLog Css */
+
+
+.blog-img{
+    border-radius: 5px;
+    border: 5px solid #ddd;
+    margin: 20px 0;
+    width: 100%;
+    height: auto;
+}
+
+
+.subject-img-front{
+    width: 50%;
+    align-self: center;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 5px solid #ddd;
+}
+
+/* =======================  sem end ========================*/
