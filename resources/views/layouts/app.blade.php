@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', config('app.name'))</title>
+    <link rel="icon" href="{{ config('settings.favicon_path') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/boxicons.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.min.css">
@@ -23,11 +24,11 @@
             <div class="row justify-content-between">
                 <div class="col-auto">
                     <p>
-                        <span class="fs-1">EduMart</span>
+                        <span class="fs-1">{{ config('app.name') }}</span>
                     </p>
                 </div>
                 <div class="col-auto py-2">
-                    <a class="fs-3 " style="color: white;" href="#">Sign In</a>
+                    <a class="fs-3 " style="color: white;" href="{{ route('login') }}">Sign In</a>
                 </div>
             </div>
         </div>
@@ -86,24 +87,28 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="footer-col">
                     <h4>Notes of</h4>
                     <ul>
-                        <li><a href="#">7th class</a></li>
-                        <li><a href="#">8th class</a></li>
-                        <li><a href="#">9th class</a></li>
-                        <li><a href="#">10th class</a></li>
-                        <li><a href="#">11th class</a></li>
-                        <li><a href="#">12th class</a></li>
-                        <li><a href="#">ADS/BSc/BS</a></li>
-                        <li><a href="#">Masters</a></li>
-                        <li><a href="#">Mphil/PhD</a></li>
-                        <li><a href="#">Past Papers</a></li>
-                        <li><a href="#">Jobs Material</a></li>
+                        @foreach ($classes as $class)
+                            @if ($class->type == 'primary')
+                                <li class="nav-item ">
+                                    <a href="{{ route('front.class', $class->name) }}"
+                                        class="nav-link">{{ $class->name }}</a>
+                                </li>
+                            @elseif($class->type == ('secondary' || 'tertiary'))
+                                @foreach ($class->subClasses as $sub)
+                                    <li>
+
+                                        <a href="{{ route('front.class', $sub->name) }}">{{ $sub->name }}</a>
+                                    </li>
+                                @endforeach
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
-                <div class="footer-col">
+                {{-- <div class="footer-col">
                     <h4>Miscellaneous</h4>
                     <ul>
                         <li><a href="#">Past Papers of All Universities</a></li>
@@ -121,7 +126,7 @@
                         <li><a href="#">WAPDA</a></li>
                         <li><a href="#">BANKS</a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <div class="footer-col">
                     <h4>Information</h4>
                     <ul>
@@ -134,11 +139,37 @@
                 <div class="footer-col">
                     <h4>Follow Us</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        @if (config('settings.facebook_link'))
+                            <a target="_blank" href="{{ config('settings.facebook_link') }}"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        @endif
+                        @if (config('settings.twitter_link'))
+                            <a target="_blank" href="{{ config('settings.twitter_link') }}"><i
+                                    class="fab fa-twitter"></i></a>
+                        @endif
+                        @if (config('settings.instagram_link'))
+                            <a target="_blank" href="{{ config('settings.instagram_link') }}"><i
+                                    class="fab fa-instagram"></i></a>
+                        @endif
+                        @if (config('settings.linkedin_link'))
+                            <a target="_blank" href="{{ config('settings.linkedin_link') }}"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        @endif
+
+                        @if (config('settings.youtube_link'))
+                            <a target="_blank" href="{{ config('settings.youtube_link') }}"><i
+                                    class="fab fa-youtube"></i></a>
+                        @endif
+                        @if (config('settings.pinterest_link'))
+                            <a target="_blank" href="{{ config('settings.pinterest_link') }}"><i
+                                    class="fab fa-pinterest"></i></a>
+                        @endif
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>{{ config('settings.copyright_text') }}</p>
                 </div>
             </div>
         </div>

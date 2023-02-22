@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -34,10 +34,15 @@
             <i class="fas fa-home"></i>
             <span>Manage Classes</span></a>
     </li>
-    <li class="nav-item @yield('settings')">
+    <li class="nav-item @yield('jobs')">
         <a class="nav-link" href="{{ route('admin.job-blog.index') }}">
             <i class="fas fa-blog"></i>
             <span>Jobs Posts</span></a>
+    </li>
+    <li class="nav-item @yield('settings')">
+        <a class="nav-link" href="{{ route('settings.index') }}">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span></a>
     </li>
 
 

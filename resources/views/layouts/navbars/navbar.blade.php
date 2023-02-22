@@ -44,7 +44,7 @@
             </div>
         </li>
 
-        <!-- Nav Item - Alerts -->
+        {{-- <!-- Nav Item - Alerts -->
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -162,14 +162,14 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More
                     Messages</a>
             </div>
-        </li>
+        </li> --}}
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset('dashboard-theme') }}/img/undraw_profile.svg">
             </a>

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Classes;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +30,8 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('classes', Classes::where('parent_id', 0)->get());
         });
+        $settings = Setting::first();
+        config(['app.name' => $settings->site_name]);
+        config(['settings' => $settings]);
     }
 }

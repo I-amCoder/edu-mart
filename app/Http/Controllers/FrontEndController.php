@@ -78,6 +78,19 @@ class FrontEndController extends Controller
     }
 
 
+    public function showAllJobs(Request $request)
+    {
+        $currentCategory = null;
+        if ($request->has('category')) {
+            $currentCategory = JobCategory::where('name', $request->category)->firstOrFail();
+            $jobs = JobsBlog::where('job_category_id', $currentCategory->id)->paginate(10);
+        } else {
+            $jobs = JobsBlog::all();
+        }
+        $jobCategories = JobCategory::all();
+        return view('frontend.jobs', compact('jobs', 'jobCategories', 'currentCategory'));
+    }
+
     public function showJob($slug)
     {
         $job = JobsBlog::where('slug', $slug)->firstOrFail();
