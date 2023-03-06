@@ -5,6 +5,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\FrontEndController as ControllersFrontEndController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\PastPaperController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
@@ -25,11 +26,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/classes', ClassesController::class, ['as' => 'admin']);
     Route::resource('class/{class}/subjects', SubjectsController::class)->except(['index,show']);
     Route::resource('chapter/{chapter}/topic', TopicsController::class, ['as' => 'admin']);
+    Route::resource('past-papers', PastPaperController::class);
+    Route::post('past-papers-category', [PastPaperController::class, 'storeCategory'])->name('past-papers-category.store');
+    Route::delete('past-papers-category/{id}', [PastPaperController::class, 'deleteCategory'])->name('past-papers-category.delete');
     Route::delete('delete-job-category/{category}', [JobsController::class, 'deleteJobCategory'])->name('job.category.delete');
     Route::post('save-job-category', [JobsController::class, 'saveJobCategory'])->name('job.category.save');
     Route::resource('job-blog', JobsController::class, ['as' => 'admin']);
@@ -51,5 +55,7 @@ Route::get('/topics/{class}/{subject}/{chapter}', [FrontEndController::class, 't
 Route::get('/{board}/{class}/topic/{slug}', [FrontEndController::class, 'topic'])->name('front.topics.show');
 Route::get('topic-download/{slug}', [FrontEndController::class, 'downloadPdf'])->name('topic.download');
 
+Route::get('all-past-papers', [FrontEndController::class, 'pastPapers'])->name('front.pastpapers');
+Route::get('download-past-paper/{id}', [FrontEndController::class, 'downloadPaper'])->name('paper.download');
 Route::get('job-advertisements', [FrontEndController::class, 'showAllJobs'])->name('jobs.all.show');
 Route::get('job-advertisements/{slug}', [FrontEndController::class, 'showJob'])->name('job.show');

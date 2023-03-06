@@ -67,7 +67,24 @@
                             </li>
                         @endif
                     @endforeach
-
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Past Papers</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            @foreach ($navPastPapers as $cat)
+                                <a href="{{ route('front.pastpapers', ['category' => $cat->name]) }}"
+                                    class="dropdown-item">{{ $cat->name }}</a>
+                            @endforeach
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            @foreach ($navJobs as $cat)
+                                <a href="{{ route('jobs.all.show', ['category' => $cat->name]) }}"
+                                    class="dropdown-item">{{ $cat->name }}</a>
+                            @endforeach
+                        </div>
+                    </li>
                 </ul>
                 <!-- <a href="#" class="btn btn-brand ms-lg-3 fs-6">Contect Us</a>
       </div> -->

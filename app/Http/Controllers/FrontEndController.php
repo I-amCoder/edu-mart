@@ -6,6 +6,8 @@ use App\Models\Board;
 use App\Models\Classes;
 use App\Models\JobCategory;
 use App\Models\JobsBlog;
+use App\Models\PastPaper;
+use App\Models\PastPaperCategory;
 use App\Models\Province;
 use App\Models\SubClasses;
 use App\Models\Subject;
@@ -66,6 +68,44 @@ class FrontEndController extends Controller
 
 
 
+
+
+    public function pastPapers(Request $request)
+    {
+        $currentCategory = null;
+        if ($request->has('category')) {
+            $currentCategory = PastPaperCategory::where('name', $request->category)->firstOrFail();
+            $papers = PastPaper::where('past_paper_category_id', $currentCategory->id)->paginate(10);
+        } else {
+            $papers = PastPaper::paginate(10);
+        }
+        $paperCategories = PastPaperCategory::all();
+        return view('frontend.papers', compact('papers', 'currentCategory', 'paperCategories'));
+    }
+
+
+    public function showAllJobs(Request $request)
+    {
+        $currentCategory = null;
+        if ($request->has('category')) {
+            $currentCategory = JobCategory::where('name', $request->category)->firstOrFail();
+            $jobs = JobsBlog::where('job_category_id', $currentCategory->id)->paginate(10);
+        } else {
+            $jobs = JobsBlog::paginate(5);
+        }
+        $jobCategories = JobCategory::all();
+        return view('frontend.jobs', compact('jobs', 'jobCategories', 'currentCategory'));
+    }
+
+    public function showJob($slug)
+    {
+        $job = JobsBlog::where('slug', $slug)->firstOrFail();
+        $jobCategories = JobCategory::all();
+        return view('frontend.job', compact('job', 'jobCategories'));
+    }
+
+
+    // Downloads
     public function downloadPdf($slug)
     {
         $topic = Topic::where('slug', $slug)->firstOrFail();
@@ -77,24 +117,14 @@ class FrontEndController extends Controller
         return Response::download($file, ($topic->name . " - " . $topic->description . '.pdf'), $headers);
     }
 
-
-    public function showAllJobs(Request $request)
+    public function downloadPaper($id)
     {
-        $currentCategory = null;
-        if ($request->has('category')) {
-            $currentCategory = JobCategory::where('name', $request->category)->firstOrFail();
-            $jobs = JobsBlog::where('job_category_id', $currentCategory->id)->paginate(10);
-        } else {
-            $jobs = JobsBlog::all();
-        }
-        $jobCategories = JobCategory::all();
-        return view('frontend.jobs', compact('jobs', 'jobCategories', 'currentCategory'));
-    }
+        $paper = PastPaper::findOrFail($id);
+        $file = public_path() . '/files/pastpaper/' . $paper->file;
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
 
-    public function showJob($slug)
-    {
-        $job = JobsBlog::where('slug', $slug)->firstOrFail();
-        $jobCategories = JobCategory::all();
-        return view('frontend.job', compact('job', 'jobCategories'));
+        return Response::download($file, ($paper->name . " - " . $paper->description . '.pdf'), $headers);
     }
 }

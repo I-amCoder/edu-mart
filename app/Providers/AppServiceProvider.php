@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Classes;
+use App\Models\JobCategory;
+use App\Models\PastPaperCategory;
 use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // Navbar and footer links for all pages
         view()->composer('layouts.app', function ($view) {
-
+            $view->with('navJobs', JobCategory::all());
+            $view->with('navPastPapers', PastPaperCategory::all());
             $view->with('classes', Classes::where('parent_id', 0)->get());
         });
         $settings = Setting::first();

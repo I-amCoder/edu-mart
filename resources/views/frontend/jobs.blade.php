@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    @foreach ($jobs as $job)
+                    @forelse ($jobs as $job)
                         <div class="col-md-6 col-lg-4 mb-2">
                             <div class="card">
                                 <img class="card-img-top" src="{{ asset('frontend/img/10th bio.jpg') }}"
@@ -20,7 +20,12 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        @if ($currentCategory)
+                            <div class="h3">No Jobs Fount In this sector yet</div>
+                            <a href="{{ route('jobs.all.show') }}" class="btn btn-success">Show All Jobs</a>
+                        @endif
+                    @endforelse
                 </div>
                 {{ $jobs->links() }}
             </div>

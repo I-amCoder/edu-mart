@@ -33,7 +33,7 @@
                         @if ($class->parent && $class->parent->type != 'tertiary')
                             @foreach ($subject->chapters as $chapter)
                                 <div class="list-group mb-4 ">
-                                    <a href="{{ route('front.chapter', ['class' => $class->name, 'board' => $province, 'subject' => $subject->name, 'chapter' => $chapter->slug]) }}"
+                                    <a href="{{ route('front.chapter', ['class' => $class->name, 'board' => $province->name, 'subject' => $subject->name, 'chapter' => $chapter->slug]) }}"
                                         class="list-group-item list-group-item-action flex-column align-items-start ">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h5 class="mb-1">Chapter:{{ $loop->index + 1 }} {{ $chapter->name }}</h5>

@@ -34,6 +34,11 @@
             <i class="fas fa-home"></i>
             <span>Manage Classes</span></a>
     </li>
+    <li class="nav-item @yield('pastpapers')">
+        <a class="nav-link" href="{{ route('past-papers.index') }}">
+            <i class="fas fa-blog"></i>
+            <span>Past Papers</span></a>
+    </li>
     <li class="nav-item @yield('jobs')">
         <a class="nav-link" href="{{ route('admin.job-blog.index') }}">
             <i class="fas fa-blog"></i>
