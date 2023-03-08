@@ -93,11 +93,21 @@ class JobsController extends Controller
             'title' => 'required|unique:jobs_blogs,title',
             'image' => 'required|mimes:png,jpg,jpeg,',
             'category' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'job_location' => 'required',
+            'job_type' => 'required',
+            'published_date' => 'required',
+            'last_apply_date' => 'required',
+            'newspaper_name' => 'required',
         ]);
         $slug = Str::slug($request->title, '-');
         $job = new JobsBlog();
         $job->title = $request->title;
+        $job->job_location = $request->job_location;
+        $job->job_type = $request->job_type;
+        $job->newspaper_name = $request->newspaper_name;
+        $job->published_date = $request->published_date;
+        $job->last_apply_date = $request->last_apply_date;
         if ($request->apply_link) {
             $job->apply_link = $request->apply_link;
         }
@@ -111,6 +121,20 @@ class JobsController extends Controller
             $job->image = $name;
             $request->image->move(public_path('jobs/images'),  $name);
         }
+        if ($request->hasFile('pdf_english')) {
+            $uuid = Str::uuid()->toString();
+            $name = $slug . '_' . $uuid . '.' . $request->pdf_english->extension();
+            $job->pdf_english = $name;
+            $request->pdf_english->move(public_path('jobs/files'),  $name);
+        }
+        if ($request->hasFile('pdf_urdu')) {
+            $uuid = Str::uuid()->toString();
+            $name = $slug . '_' . $uuid . '.' . $request->pdf_urdu->extension();
+            $job->pdf_urdu = $name;
+            $request->pdf_urdu->move(public_path('jobs/files'),  $name);
+        }
+
+
         $job->save();
 
         return to_route('admin.job-blog.index')->withSuccess("Job Post Created Successfully");

@@ -106,6 +106,17 @@ class FrontEndController extends Controller
 
 
     // Downloads
+    public function downloadJobPdf($id, $type = 'english')
+    {
+        $job = JobsBlog::where('id', $id)->firstOrFail();
+        $file = public_path() . '/jobs/files/' . $job['pdf_' . $type];
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, ($job->title . " - " . $type . '.pdf'), $headers);
+    }
+
     public function downloadPdf($slug)
     {
         $topic = Topic::where('slug', $slug)->firstOrFail();

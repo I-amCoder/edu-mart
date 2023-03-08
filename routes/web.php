@@ -59,3 +59,4 @@ Route::get('all-past-papers', [FrontEndController::class, 'pastPapers'])->name('
 Route::get('download-past-paper/{id}', [FrontEndController::class, 'downloadPaper'])->name('paper.download');
 Route::get('job-advertisements', [FrontEndController::class, 'showAllJobs'])->name('jobs.all.show');
 Route::get('job-advertisements/{slug}', [FrontEndController::class, 'showJob'])->name('job.show');
+Route::get('job-advertisements/download/{id}/{type}', [FrontEndController::class, 'downloadJobPdf'])->name('job.file.download');

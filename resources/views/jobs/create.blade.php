@@ -27,11 +27,76 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="apply_link">Job Title</label>
+                                    <label for="apply_link">Apply Link</label>
                                     <input class="form-control @error('apply_link') is-invalid @enderror" type="text"
                                         name="apply_link" id="apply_link" value="{{ old('apply_link') }}"
-                                        placeholder="Enter Job Title" required>
+                                        placeholder="Enter Job Apply Link If any" required>
                                     @error('apply_link')
+                                        <span role="alert">
+                                            <strong class="text-danger">
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="job_location">Job Location</label>
+                                    <input class="form-control @error('job_location') is-invalid @enderror" type="text"
+                                        name="job_location" id="job_location" value="{{ old('job_location') }}"
+                                        placeholder="Job Location " required>
+                                    @error('job_location')
+                                        <span role="alert">
+                                            <strong class="text-danger">
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="job_type">Job Type</label>
+                                    <input class="form-control @error('job_type') is-invalid @enderror" type="text"
+                                        name="job_type" id="job_type" value="{{ old('job_type') }}" placeholder="Job Type"
+                                        required>
+                                    @error('job_type')
+                                        <span role="alert">
+                                            <strong class="text-danger">
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="published_date">Publish Date</label>
+                                    <input class="form-control @error('published_date') is-invalid @enderror"
+                                        type="datetime-local" name="published_date" id="published_date"
+                                        value="{{ old('published_date') }}" placeholder="" required>
+                                    @error('published_date')
+                                        <span role="alert">
+                                            <strong class="text-danger">
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="last_apply_date">Last Date For Apply</label>
+                                    <input class="form-control @error('last_apply_date') is-invalid @enderror"
+                                        type="datetime-local" name="last_apply_date" id="last_apply_date"
+                                        value="{{ old('last_apply_date') }}" placeholder="" required>
+                                    @error('last_apply_date')
+                                        <span role="alert">
+                                            <strong class="text-danger">
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="newspaper_name">Newspaper Name</label>
+                                    <input class="form-control @error('newspaper_name') is-invalid @enderror" type="text"
+                                        name="newspaper_name" id="newspaper_name" value="{{ old('newspaper_name') }}"
+                                        placeholder="Enter Job Apply Link If any" required>
+                                    @error('newspaper_name')
                                         <span role="alert">
                                             <strong class="text-danger">
                                                 {{ $message }}
@@ -54,6 +119,29 @@
                                             </strong>
                                         </span>
                                     @enderror
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="pdf_english" class="form-label">Pdf (English)</label>
+                                    <input accept=".pdf" required type="file"
+                                        class="form-control @error('pdf_english') is-invalid @enderror" name="pdf_english">
+                                    @error('pdf_english')
+                                        <span role="alert">
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="pdf_urdu" class="form-label">Pdf (English)</label>
+                                    <input accept=".pdf" required type="file"
+                                        class="form-control @error('pdf_urdu') is-invalid @enderror" name="pdf_urdu">
+                                    @error('pdf_urdu')
+                                        <span role="alert">
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group col-md-12">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">

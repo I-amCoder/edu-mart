@@ -333,6 +333,58 @@ font-family: Arial, Helvetica, sans-serif;
 }
 /* ==========================  Services end  ================================ */
 
+/* ==========================  jobslinksalll   ================================ */
+.joblinksall{
+    border: 2px solid rgb(47, 107, 228);
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+.joblinksall a{
+   color: #3b00fc;
+  }
+
+.joblinksall a:hover{
+   background-color: #fff7f8;
+   color: #fa836b;
+ }
+.joblinksall small{
+color: black;
+}
+
+/* ==========================  jobslinksalll  end  ================================ */
+/* ========================== job details start =================== */
+.top_headings {
+
+}
+.top_headings h6{
+ color: #3b00fc;
+}
+ .jobdetail_headings{
+    background-color: #bde5a0;
+    font-family: sans-serif;
+    padding-left: 30px;
+    font-weight: 900;
+    border:1px solid rgb(161, 210, 237) ;
+ }
+ .jobdetail_data1{
+    background-color: #fbe7f9;
+    border:1px solid rgb(161, 210, 237);
+    padding-left: 30px;
+    font-weight: 700;
+    font-family: sans-serif;
+ }
+ .jobdetail_data2{
+    background-color: #eff4f8;
+    border:1px solid rgb(161, 210, 237);
+    padding-left: 30px;
+    font-family: sans-serif;
+ }
+
+/* ========================== job details end =================== */
+
 
 /* ===========================   Footer start =========================== */
 

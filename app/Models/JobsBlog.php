@@ -9,11 +9,21 @@ class JobsBlog extends Model
 {
     use HasFactory;
 
-    protected $appends = ['image_path'];
+    protected $appends = ['image_path', 'urdu_pdf', 'english_pdf'];
 
     public function getImagePathAttribute()
     {
         return url('jobs/images/' . $this->image);
+    }
+
+    public function getUrduPdfAttribute()
+    {
+        return url('jobs/files/' . $this->pdf_urdu);
+    }
+
+    public function getEnglishPdfAttribute()
+    {
+        return url('jobs/files/' . $this->pdf_english);
     }
 
     public function category()

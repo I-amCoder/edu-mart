@@ -4,29 +4,22 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-md-8">
-                <div class="row">
-                    @forelse ($jobs as $job)
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <div class="card">
-                                <img class="card-img-top" src="{{ asset('frontend/img/10th bio.jpg') }}"
-                                    style="max-height: 200px" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk
-                                        of
-                                        the card's content.</p>
-                                    <a href="{{ route('job.show', $job->slug) }}" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
+                @forelse ($jobs as $job)
+                    <div class="row">
+                        <div class="col-lg-10 col-sm-12 joblinksall">
+                            <h6><a href="{{ route('job.show', $job->slug) }}">{{ $job->title }}</a></h6>
+                            <small><i class=" mr-2">Newspaper:</i><i
+                                    class="ms-1 text-success">{{ $job->newspaper_name }}</i></small>
+                            <small><i class="  ms-5">Publish Date:</i><i
+                                    class="ms-1 text-success">{{ \Carbon\Carbon::parse($job->published_date)->format('d-F-Y l') }}</i></small>
                         </div>
-                    @empty
-                        @if ($currentCategory)
-                            <div class="h3">No Jobs Fount In this sector yet</div>
-                            <a href="{{ route('jobs.all.show') }}" class="btn btn-success">Show All Jobs</a>
-                        @endif
-                    @endforelse
-                </div>
+                    </div>
+                @empty
+                    @if ($currentCategory)
+                        <div class="h3">No Jobs Fount In this sector yet</div>
+                        <a href="{{ route('jobs.all.show') }}" class="btn btn-success">Show All Jobs</a>
+                    @endif
+                @endforelse
                 {{ $jobs->links() }}
             </div>
             @include('frontend.partials.aside')
