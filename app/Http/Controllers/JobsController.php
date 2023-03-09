@@ -178,13 +178,23 @@ class JobsController extends Controller
         $request->validate([
             'title' => 'required|unique:jobs_blogs,title,' . decrypt($id),
             'category' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'job_location' => 'required',
+            'job_type' => 'required',
+            'published_date' => 'required',
+            'last_apply_date' => 'required',
+            'newspaper_name' => 'required',
         ]);
 
         // Proceed To Update
         $slug =  Str::slug($request->title, '-');
         $job = JobsBlog::findOrFail(decrypt($id));
         $job->title = $request->title;
+        $job->job_location = $request->job_location;
+        $job->job_type = $request->job_type;
+        $job->newspaper_name = $request->newspaper_name;
+        $job->published_date = $request->published_date;
+        $job->last_apply_date = $request->last_apply_date;
         if ($request->apply_link) {
             $job->apply_link = $request->apply_link;
         }
@@ -202,6 +212,28 @@ class JobsController extends Controller
             $job->image = $name;
             $job->job_category_id = decrypt($request->category);
             $request->image->move(public_path('jobs/images'),  $name);
+        }
+        if ($request->hasFile('pdf_english')) {
+            // Delete Old File
+            $file = $file = public_path() . '/jobs/files/' . $job->pdf_english;
+            if (File::exists($file)) {
+                File::delete($file);
+            }
+            $uuid = Str::uuid()->toString();
+            $name = $slug . '_' . $uuid . '.' . $request->pdf_english->extension();
+            $job->pdf_english = $name;
+            $request->pdf_english->move(public_path('jobs/files'),  $name);
+        }
+        if ($request->hasFile('pdf_urdu')) {
+            // Delete Old File
+            $file = $file = public_path() . '/jobs/files/' . $job->pdf_urdu;
+            if (File::exists($file)) {
+                File::delete($file);
+            }
+            $uuid = Str::uuid()->toString();
+            $name = $slug . '_' . $uuid . '.' . $request->pdf_urdu->extension();
+            $job->pdf_urdu = $name;
+            $request->pdf_urdu->move(public_path('jobs/files'),  $name);
         }
         $job->update();
 
