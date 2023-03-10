@@ -14,6 +14,7 @@ class JobsController extends Controller
 
     public function saveJobCategory(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string',
             'description' => 'required',
@@ -30,6 +31,13 @@ class JobsController extends Controller
             ]);
             $category = new JobCategory();
         }
+        if ($request->parent_category) {
+            $p_cat = JobCategory::find($request->parent_category);
+            if (!$p_cat) {
+                return back()->withErrors(['parent_category' => "Category Not Found"]);
+            }
+            $category->parent_id = $p_cat->id;
+        }
         $category->name = $request->name;
         $category->description = $request->description;
         $category->save();
@@ -41,6 +49,9 @@ class JobsController extends Controller
     public function deleteJobCategory($hash)
     {
         $category = JobCategory::findOrFail(decrypt($hash));
+        if ($category->subCategories) {
+            JobCategory::where('parent_id', $category->id)->delete();
+        }
         $category->delete();
         return back()->withSuccess('Category Has Been Deleted');
     }
@@ -66,7 +77,7 @@ class JobsController extends Controller
      */
     public function create()
     {
-        $categories = JobCategory::all();
+        $categories = JobCategory::childs();
         return view('jobs.create', compact('categories'));
     }
 

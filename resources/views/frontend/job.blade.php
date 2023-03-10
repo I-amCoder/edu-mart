@@ -76,7 +76,8 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-6">
-                        <strong class="text-danger"> Last Date to Apply: 14 December 2025</strong>
+                        <strong class="text-danger"> Last Date to Apply:
+                            {{ \Carbon\Carbon::parse($job->last_apply_date)->format('d F Y') }}</strong>
                     </div>
                 </div>
                 <div class="container blog-content ">
@@ -85,14 +86,14 @@
                 <img class="blog-img" src="{{ $job->image_path }}" alt="{{ $job->title }}">
                 <hr>
                 <div class="row mt-4">
-                    <h2>Files:</h2>
+                    <h2>Advertisement Files:</h2>
                     <div class="container ">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img src="{{ $job->image_path }}" alt="" width="100%">
-                                        <h6 class="mt-3">PDF English</h6>
+                                        {{-- <img src="{{ $job->image_path }}" alt="" width="100%"> --}}
+                                        <h6 class="mt-3">Advertisement File in English</h6>
                                     </div>
                                     <div class="card-footer">
                                         <a href="{{ $job->english_pdf }}" target="_blank" class="btn btn-warning">View
@@ -105,8 +106,8 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img src="{{ $job->image_path }}" alt="" width="100%">
-                                        <h6 class="mt-3">PDF Urdu</h6>
+                                        {{-- <img src="{{ $job->image_path }}" alt="" width="100%"> --}}
+                                        <h6 class="mt-3">Advertisement File in Urdu</h6>
 
                                     </div>
                                     <div class="card-footer">

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Board;
 use App\Models\Classes;
 use App\Models\JobCategory;
 use App\Models\JobsBlog;
@@ -15,8 +14,7 @@ use App\Models\SubjectChapter;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Mockery\Matcher\Subset;
-use PhpParser\Builder\Class_;
+use Illuminate\Support\Str;
 
 class FrontEndController extends Controller
 {
@@ -88,10 +86,15 @@ class FrontEndController extends Controller
     {
         $currentCategory = null;
         if ($request->has('category')) {
-            $currentCategory = JobCategory::where('name', $request->category)->firstOrFail();
-            $jobs = JobsBlog::where('job_category_id', $currentCategory->id)->paginate(10);
+            $currentCategory = JobCategory::where(Str::slug('name', '-'), $request->category)->firstOrFail();
+            if ($currentCategory->subCategories->count() > 0) {
+                $ids  = $currentCategory->subCategories->pluck('id');
+                $jobs = JobsBlog::whereIn('job_category_id', $ids)->latest()->paginate(10);
+            } else {
+                $jobs = JobsBlog::where('job_category_id', $currentCategory->id)->latest()->paginate(10);
+            }
         } else {
-            $jobs = JobsBlog::paginate(5);
+            $jobs = JobsBlog::paginate(10);
         }
         $jobCategories = JobCategory::all();
         return view('frontend.jobs', compact('jobs', 'jobCategories', 'currentCategory'));

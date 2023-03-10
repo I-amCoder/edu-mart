@@ -107,7 +107,6 @@
                                 <div class="form-group col-md-6">
                                     <label for="category">Job Category</label>
                                     <select name="category" id="category" class="form-control">
-                                        <option value="{{ encrypt(0) }}">Uncategorized</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ encrypt($category->id) }}">{{ $category->name }}</option>
                                         @endforeach

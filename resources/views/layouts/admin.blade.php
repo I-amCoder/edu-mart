@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('dashboard-theme/css/custom.css') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('dashboard-theme/css/bootstrap-toggle.min.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
 
     @stack('css')
 
@@ -123,6 +125,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
     <script src="{{ asset('dashboard-theme') }}/js/sb-admin-2.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
 
     <script>

@@ -103,15 +103,14 @@
             <div class="mobileheadings px-4">
                 <h5>{{ $category->name }}:</h5>
                 <div class="row mobile_ancher_text_settings px-4">
-                    @forelse ($category->jobs as $job)
+                    <div class="col-sm-2">
+                        <a href="{{ route('jobs.all.show', ['category' => $category->name]) }}">Show All</a>
+                    </div>
+                    @foreach ($category->subCategories as $sub)
                         <div class="col-sm-2">
-                            <a href="{{ route('job.show', $job->slug) }}">{{ $job->title }}</a>
+                            <a href="{{ route('jobs.all.show', ['category' => $sub->name]) }}">{{ $sub->name }}</a>
                         </div>
-                    @empty
-                        <div class="col9-12 text-center">
-                            <p class="text-danger">Not Jobs in This Sector</p>
-                        </div>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
         @endforeach

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h3>Manage Job Categories</h3>
@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="catTable" class="table">
                                 <thead>
                                     <th>Name</th>
                                     <th>Description</th>
@@ -20,7 +20,14 @@
                                 <tbody>
                                     @forelse ($categories as $category)
                                         <tr>
-                                            <td>{{ $category->name }}</td>
+                                            <td>
+                                                {{ $category->name }}
+                                                @if ($category->parent_id != 0)
+                                                    <div class="badge badge-danger">Sub Category</div>
+                                                @else
+                                                    <div class="badge badge-success">Main Category</div>
+                                                @endif
+                                            </td>
                                             <td>{{ $category->description }}</td>
                                             <td>
                                                 <form action="{{ route('job.category.delete', encrypt($category->id)) }}"
@@ -29,6 +36,7 @@
                                                     @method('delete')
                                                     <button class="edit-cat-btn btn btn-sm"
                                                         data-name="{{ $category->name }}"
+                                                        data-parent_category="{{ $category->parent_id != 0 ? $category->parent_id : null }}"
                                                         data-description="{{ $category->description }}"
                                                         data-id="{{ encrypt($category->id) }}">
                                                         <i class="fa fa-edit text-warning"></i>
@@ -136,6 +144,22 @@
                                 @enderror
                             </div>
                             <div class="form-group col-12">
+                                <label>Parent Category</label>
+                                <select class="form-control" name="parent_category">
+                                    <option value>None</option>
+                                    @foreach ($categories as $category)
+                                        @if ($category->parent_id == 0)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('parent_category')
+                                    <span role="alert">
+                                        <strong class="text-danger">{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-12">
                                 <label>Description</label>
                                 <input value="{{ old('description') }}" type="text"
                                     class="form-control @error('description') is-invalid @enderror" name="description"
@@ -163,6 +187,9 @@
 
 @push('js')
     <script>
+        $(document).ready(function() {
+            $('#catTable').DataTable();
+        });
         $(".add-cat-btn").click(function(e) {
             e.preventDefault();
             $("#addCategoryModal").modal('show');
@@ -172,6 +199,10 @@
             $("input[name='category_id']").val($(this).data('id'));
             $("input[name='name']").val($(this).data('name'));
             $("input[name='description']").val($(this).data('description'));
+            let cat = $(this).data('parent_category');
+            if (cat) {
+                $("select[name='parent_category']").val(cat);
+            }
             $("#addCategoryModal").modal('show');
         });
         @if (Session::has('errors'))
