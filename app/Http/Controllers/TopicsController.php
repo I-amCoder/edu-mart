@@ -12,6 +12,16 @@ use Illuminate\Support\Str;
 
 class TopicsController extends Controller
 {
+    public function uploadFile(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $uuid = Str::uuid()->toString();
+            $name = 'file___' . $uuid . '.'  . $request->file->extension();
+            // $request->file->move(public_path('topics/files'),  $name);
+            return response()->json(['name' => $name], 200);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
