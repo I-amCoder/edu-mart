@@ -31,14 +31,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/classes', ClassesController::class, ['as' => 'admin']);
     Route::resource('class/{class}/subjects', SubjectsController::class)->except(['index,show']);
     Route::resource('chapter/{chapter}/topic', TopicsController::class, ['as' => 'admin']);
-    Route::post('topic/file/upload', [TopicsController::class, 'uploadFile'])->name('admin.topic.file.upload');
     Route::resource('past-papers', PastPaperController::class);
     Route::post('past-papers-category', [PastPaperController::class, 'storeCategory'])->name('past-papers-category.store');
     Route::delete('past-papers-category/{id}', [PastPaperController::class, 'deleteCategory'])->name('past-papers-category.delete');
     Route::delete('delete-job-category/{category}', [JobsController::class, 'deleteJobCategory'])->name('job.category.delete');
     Route::post('save-job-category', [JobsController::class, 'saveJobCategory'])->name('job.category.save');
     Route::resource('job-blog', JobsController::class, ['as' => 'admin']);
-    // Route::post('image-upload', [JobsController::class, 'imageUpload'])->name('image.upload');
+    Route::post('image-upload', [JobsController::class, 'imageUpload'])->name('image.upload');
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingsController::class, 'update'])->name('settings.update');
     Route::get('classes/{class}/details', [ClassesController::class, 'classDetail'])->name('admin.class.details');

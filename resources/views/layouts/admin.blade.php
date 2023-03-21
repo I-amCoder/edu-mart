@@ -15,7 +15,6 @@
     <link href="{{ asset('dashboard-theme') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
         type="text/css">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
 
 
     <link
@@ -26,9 +25,9 @@
 
     <link href="{{ asset('dashboard-theme') }}/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dashboard-theme/css/custom.css') }}">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('dashboard-theme/css/bootstrap-toggle.min.css') }}">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard-theme/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
 
 
     @stack('css')
@@ -121,10 +120,10 @@
     <script src="{{ asset('dashboard-theme') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="{{ asset('dashboard-theme/js/bootstrap-toggle.min.js') }}"></script>
     <!-- Custom scripts for all pages-->
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+
+
     <script src="{{ asset('dashboard-theme') }}/js/sb-admin-2.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+    <script src="{{ asset('dashboard-theme/js/jasny-bootstrap.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
 
